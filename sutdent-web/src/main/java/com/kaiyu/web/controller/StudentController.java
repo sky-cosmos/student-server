@@ -2,9 +2,9 @@ package com.kaiyu.web.controller;
 
 import java.util.List;
 
-import cn.hutool.extra.spring.SpringUtil;
 import com.kaiyu.common.api.CommonPage;
 import com.kaiyu.common.api.CommonResult;
+import com.kaiyu.mbg.domain.UmsAdmin;
 import com.kaiyu.mbg.domain.UmsStudent;
 import com.kaiyu.web.dto.PageParam;
 import com.kaiyu.web.dto.UmsStudentParam;
@@ -12,18 +12,20 @@ import com.kaiyu.web.service.UmsStudentService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 
-@RestController("/student")
+@RestController
+@RequestMapping("/api/v2/student")
 public class StudentController {
     @Autowired
     UmsStudentService umsStudentService;
 
     @ApiOperation("用户新增")
     @PostMapping("/insert")
-    public CommonResult insert(@RequestBody UmsStudentParam umsStudent) {
+    public CommonResult insert(@Validated @RequestBody UmsStudentParam umsStudent) {
         UmsStudent umsStudent1 = new UmsStudent();
         BeanUtils.copyProperties(umsStudent,umsStudent1);
         int result = umsStudentService.insert(umsStudent1);
@@ -36,7 +38,7 @@ public class StudentController {
 
     @ApiOperation("用户修改")
     @PostMapping("/update")
-    public CommonResult update(@RequestBody UmsStudentParam umsStudent) {
+    public CommonResult update(@Validated @RequestBody UmsStudentParam umsStudent) {
         UmsStudent umsStudent1 = new UmsStudent();
         BeanUtils.copyProperties(umsStudent,umsStudent1);
         int result = umsStudentService.update(umsStudent1);
@@ -60,7 +62,7 @@ public class StudentController {
 
     @ApiOperation("分页查询")
     @PostMapping("/list")
-    public CommonResult<CommonPage> list(@RequestBody PageParam pageParam) {
+    public CommonResult<CommonPage> list(@Validated @RequestBody PageParam pageParam) {
         List<UmsStudent> result = umsStudentService.list(pageParam);
         return CommonResult.success(CommonPage.restPage(result));
     }
