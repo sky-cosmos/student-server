@@ -12,6 +12,11 @@ public interface UmsAdminService {
     UmsAdmin getAdminByUsername(String userName);
 
     List<UmsAdmin> list(PageInfo loginRq);
+    int insertt(UmsAdmin umsAdmin);
+
+    int update(UmsAdmin admin);
+
+    int delete(Long adminId);
 }
 
 
