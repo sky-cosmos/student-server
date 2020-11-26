@@ -92,14 +92,10 @@
 <!--      <module>student-mbg</module>-->
       <dependency>
         <groupId>com.kaiyu</groupId>
-        <artifactId>sutdent-common</artifactId>
+        <artifactId>student-common</artifactId>
         <version>1.0-SNAPSHOT</version>
       </dependency>
-      <dependency>
-        <groupId>com.kaiyu</groupId>
-        <artifactId>sutdent-mbg</artifactId>
-        <version>1.0-SNAPSHOT</version>
-      </dependency>
+
       <dependency>
         <groupId>com.kaiyu</groupId>
         <artifactId>sutdent-web</artifactId>
@@ -120,48 +116,19 @@
         <artifactId>guava</artifactId>
         <version>28.1-jre</version>
       </dependency>
-      <!--finance通用模块-->
-      <dependency>
-        <groupId>com.shanghaizhida.finanace</groupId>
-        <artifactId>finanace-common</artifactId>
-        <version>1.0-SNAPSHOT</version>
-      </dependency>
-      <!--finance中MBG生成模块-->
-      <dependency>
-        <groupId>com.shanghaizhida.finanace</groupId>
-        <artifactId>finanace-mbg</artifactId>
-        <version>1.0-SNAPSHOT</version>
-      </dependency>
-      <dependency>
-        <groupId>com.shanghaizhida.finanace</groupId>
-        <artifactId>finanace-security</artifactId>
-        <version>1.0-SNAPSHOT</version>
-      </dependency>
+
       <dependency>
         <groupId>com.github.xiaoymin</groupId>
         <artifactId>knife4j-spring-boot-starter</artifactId>
         <version>${knife4j.version}</version>
       </dependency>
-      <dependency>
-        <groupId>com.shanghaizhida.finanace</groupId>
-        <artifactId>finanace-match</artifactId>
-        <version>1.0.0</version>
-      </dependency>
-      <dependency>
-        <groupId>com.shanghaizhida.finanace</groupId>
-        <artifactId>finanace-market</artifactId>
-        <version>1.0-SNAPSHOT</version>
-      </dependency>
+
       <dependency>
         <groupId>com.alibaba</groupId>
         <artifactId>fastjson</artifactId>
         <version>1.2.60</version>
       </dependency>
-      <dependency>
-        <groupId>com.shanghaizhida.finanace</groupId>
-        <artifactId>finanace-match</artifactId>
-        <version>1.0.0</version>
-      </dependency>
+
       <!--MyBatis分页插件starter-->
       <dependency>
         <groupId>com.github.pagehelper</groupId>
