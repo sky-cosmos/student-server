@@ -7,6 +7,7 @@ import com.kaiyu.common.api.CommonResult;
 import com.kaiyu.mbg.domain.UmsAdmin;
 import com.kaiyu.web.dto.AdminParam;
 import com.kaiyu.web.dto.UmsAdminParam;
+import com.kaiyu.web.dto.UmsAdminQueryParam;
 import com.kaiyu.web.service.UmsAdminService;
 import com.kaiyu.web.utils.JwtTokenUtils;
 import io.swagger.annotations.ApiOperation;
@@ -67,6 +68,12 @@ public class AdminController {
     public CommonResult<CommonPage> list(@Valid @RequestBody PageInfo loginRq){
         List<UmsAdmin> user= adminService.list(loginRq);
        return CommonResult.success(CommonPage.restPage(user));
+    }
+    @PostMapping("/listQuery")
+    @ApiOperation(value = "查询")
+    public CommonResult<CommonPage> list(@Valid @RequestBody UmsAdminQueryParam  loginRq){
+        List<UmsAdmin> user= adminService.query(loginRq);
+        return CommonResult.success(CommonPage.restPage(user));
     }
 
     @PostMapping("/login")
