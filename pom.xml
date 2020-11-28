@@ -10,9 +10,6 @@
   <version>1.0-SNAPSHOT</version>
   <modules>
     <module>sutdent-web</module>
-    <module>student-security</module>
-    <module>student-common</module>
-    <module>student-mbg</module>
   </modules>
 
   <name>stuservers</name>
@@ -31,53 +28,55 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <java.version>1.8</java.version>
     <skipTests>true</skipTests>
-    <docker.host>http://192.168.1.158:2375</docker.host>
-    <docker.maven.plugin.version>1.1.0</docker.maven.plugin.version>
     <pagehelper-starter.version>1.2.10</pagehelper-starter.version>
-    <mapper-starter.version>2.1.5</mapper-starter.version>
     <pagehelper.version>5.1.8</pagehelper.version>
     <druid.version>1.1.10</druid.version>
     <hutool.version>5.4.2</hutool.version>
     <poi-ooxml.version>4.1.2</poi-ooxml.version>
-    <swagger2.version>2.7.0</swagger2.version>
-    <knife4j.version>1.9.6</knife4j.version>
-    <mybatis-generator.version>1.3.7</mybatis-generator.version>
-    <mybatis.version>3.4.6</mybatis.version>
     <mysql-connector.version>8.0.15</mysql-connector.version>
     <spring-data-commons.version>2.1.5.RELEASE</spring-data-commons.version>
-    <jjwt.version>0.9.0</jjwt.version>
-    <aliyun-oss.version>2.5.0</aliyun-oss.version>
-    <logstash-logback.version>4.8</logstash-logback.version>
-    <minio.version>3.0.10</minio.version>
-    <finanace-common.version>1.0-SNAPSHOT</finanace-common.version>
-    <easyexcel.version>2.1.6</easyexcel.version>
-    <java-websocker.version>1.5.1</java-websocker.version>
-    <!--        <finanace-mbg.version>1.0-SNAPSHOT</finanace-mbg.version>-->
-    <!--        <finanace-security.version>1.0-SNAPSHOT</finanace-security.version>-->
   </properties>
 <!--  这里是基本项目依赖，这个的子项目都会依赖这些-->
   <dependencies>
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>fastjson</artifactId>
+    </dependency>
+    <!--        分页插件-->
+    <dependency>
+      <groupId>com.github.pagehelper</groupId>
+      <artifactId>pagehelper</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.data</groupId>
+      <artifactId>spring-data-commons</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>cn.hutool</groupId>
+      <artifactId>hutool-all</artifactId>
+    </dependency>
+    <!--        这个是一个比较好用的工具包-->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+    </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-actuator</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-aop</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-test</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
       <groupId>com.github.pagehelper</groupId>
       <artifactId>pagehelper-spring-boot-starter</artifactId>
     </dependency>
+      <dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-jdbc</artifactId>
+      </dependency>
     <dependency>
       <groupId>com.alibaba</groupId>
       <artifactId>druid-spring-boot-starter</artifactId>
@@ -86,70 +85,27 @@
 <!--  这个是依赖管理，后面子项目可能会用到，但是并不是所有项目都会用，所以在这里集中作为版本管理中心-->
   <dependencyManagement>
     <dependencies>
-<!--      <module>sutdent-web</module>-->
-<!--      <module>student-security</module>-->
-<!--      <module>student-common</module>-->
-<!--      <module>student-mbg</module>-->
-      <dependency>
-        <groupId>com.kaiyu</groupId>
-        <artifactId>student-common</artifactId>
-        <version>1.0-SNAPSHOT</version>
-      </dependency>
-
-      <dependency>
-        <groupId>com.kaiyu</groupId>
-        <artifactId>sutdent-web</artifactId>
-        <version>1.0-SNAPSHOT</version>
-      </dependency>
-      <dependency>
-        <groupId>com.kaiyu</groupId>
-        <artifactId>student-security</artifactId>
-        <version>1.0-SNAPSHOT</version>
-      </dependency>
-      <dependency>
-        <groupId>org.java-websocket</groupId>
-        <artifactId>Java-WebSocket</artifactId>
-        <version>${java-websocker.version}</version>
-      </dependency>
       <dependency>
         <groupId>com.google.guava</groupId>
         <artifactId>guava</artifactId>
         <version>28.1-jre</version>
       </dependency>
-
-      <dependency>
-        <groupId>com.github.xiaoymin</groupId>
-        <artifactId>knife4j-spring-boot-starter</artifactId>
-        <version>${knife4j.version}</version>
-      </dependency>
-
       <dependency>
         <groupId>com.alibaba</groupId>
         <artifactId>fastjson</artifactId>
         <version>1.2.60</version>
       </dependency>
-
       <!--MyBatis分页插件starter-->
       <dependency>
         <groupId>com.github.pagehelper</groupId>
         <artifactId>pagehelper-spring-boot-starter</artifactId>
         <version>${pagehelper-starter.version}</version>
       </dependency>
-      <dependency>
-        <groupId>tk.mybatis</groupId>
-        <artifactId>mapper-spring-boot-starter</artifactId>
-        <version>${mapper-starter.version}</version>
-      </dependency>
       <!--MyBatis分页插件-->
       <dependency>
         <groupId>com.github.pagehelper</groupId>
         <artifactId>pagehelper</artifactId>
         <version>${pagehelper.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.alibaba</groupId>
-        <artifactId>easyexcel</artifactId>
-        <version>${easyexcel.version}</version>
       </dependency>
       <!--集成druid连接池-->
       <dependency>
@@ -168,29 +124,6 @@
         <artifactId>poi-ooxml</artifactId>
         <version>${poi-ooxml.version}</version>
       </dependency>
-      <!--Swagger-UI API文档生产工具-->
-      <dependency>
-        <groupId>io.springfox</groupId>
-        <artifactId>springfox-swagger2</artifactId>
-        <version>${swagger2.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>io.springfox</groupId>
-        <artifactId>springfox-swagger-ui</artifactId>
-        <version>${swagger2.version}</version>
-      </dependency>
-      <!-- MyBatis 生成器 -->
-      <dependency>
-        <groupId>org.mybatis.generator</groupId>
-        <artifactId>mybatis-generator-core</artifactId>
-        <version>${mybatis-generator.version}</version>
-      </dependency>
-      <!-- MyBatis-->
-      <dependency>
-        <groupId>org.mybatis</groupId>
-        <artifactId>mybatis</artifactId>
-        <version>${mybatis.version}</version>
-      </dependency>
       <!--Mysql数据库驱动-->
       <dependency>
         <groupId>mysql</groupId>
@@ -202,35 +135,6 @@
         <groupId>org.springframework.data</groupId>
         <artifactId>spring-data-commons</artifactId>
         <version>${spring-data-commons.version}</version>
-      </dependency>
-      <!--JWT(Json Web Token)登录支持-->
-      <dependency>
-        <groupId>io.jsonwebtoken</groupId>
-        <artifactId>jjwt</artifactId>
-        <version>${jjwt.version}</version>
-      </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.nimbusds</groupId>-->
-<!--            <artifactId>nimbus-jose-jwt</artifactId>-->
-<!--            <version>8.16</version>-->
-<!--        </dependency>-->
-      <!-- 阿里云OSS -->
-      <dependency>
-        <groupId>com.aliyun.oss</groupId>
-        <artifactId>aliyun-sdk-oss</artifactId>
-        <version>${aliyun-oss.version}</version>
-      </dependency>
-      <!--集成logstash-->
-      <dependency>
-        <groupId>net.logstash.logback</groupId>
-        <artifactId>logstash-logback-encoder</artifactId>
-        <version>${logstash-logback.version}</version>
-      </dependency>
-      <!--MinIO JAVA SDK-->
-      <dependency>
-        <groupId>io.minio</groupId>
-        <artifactId>minio</artifactId>
-        <version>${minio.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>

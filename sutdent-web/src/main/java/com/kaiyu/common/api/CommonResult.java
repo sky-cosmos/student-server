@@ -1,17 +1,10 @@
 package com.kaiyu.common.api;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiModelProperty;
 
-@Api(value = "通用返回对象")
 public class CommonResult<T> {
-    @ApiModelProperty(value = "错误码",required = true)
     private long code;
-    @ApiModelProperty(value = "msg")
     private String message;
-    @ApiModelProperty(value = "数据部分")
     private T data;
-    @ApiModelProperty(value = "毫秒时间戳",required = true)
     private Long ts;
 
     protected CommonResult() {
