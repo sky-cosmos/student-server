@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import com.kaiyu.mbg.mapper.UmsStudentMapper;
 import com.kaiyu.web.service.UmsStudentService;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 

@@ -37,7 +37,7 @@ public class StudentController {
     }
 
     @ApiOperation("用户修改")
-    @PostMapping("/update")
+    @PutMapping("/update")
     public CommonResult update(@Validated @RequestBody UmsStudentParam umsStudent) {
         UmsStudent umsStudent1 = new UmsStudent();
         BeanUtils.copyProperties(umsStudent,umsStudent1);
@@ -50,7 +50,7 @@ public class StudentController {
     }
 
     @ApiOperation("用户删除")
-    @PostMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public CommonResult insert(@PathVariable("id") Integer sutudenId, HttpSession session) {
         int result = umsStudentService.deleteById(sutudenId);
         if(result==1){

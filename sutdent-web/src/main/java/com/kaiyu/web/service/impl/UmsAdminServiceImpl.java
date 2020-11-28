@@ -1,8 +1,10 @@
 package com.kaiyu.web.service.impl;
 
+import com.alibaba.druid.util.StringUtils;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.kaiyu.mbg.domain.UmsAdmin;
+import com.kaiyu.web.dto.UmsAdminQueryParam;
 import jdk.nashorn.internal.ir.ReturnNode;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
@@ -56,5 +58,24 @@ public class UmsAdminServiceImpl implements UmsAdminService{
     @Override
     public int delete(Long adminId) {
         return umsAdminMapper.deleteByPrimaryKey(adminId);
+    }
+
+    @Override
+    public List<UmsAdmin> query(UmsAdminQueryParam loginRq) {
+        PageHelper.startPage(loginRq.getPageNum(),loginRq.getPageSize());
+        Example example = new Example(UmsAdmin.class);
+        Example.Criteria criteria = example.createCriteria();
+        if(!StringUtils.isEmpty(loginRq.getNickName())){
+            //模糊查询
+            criteria.andLike("nickName","%"+loginRq.getNickName()+"%");
+        }
+        if(!StringUtils.isEmpty(loginRq.getUsername())){
+            //模糊查询
+            criteria.andLike("username","%"+loginRq.getUsername()+"%");
+        }
+        if(loginRq.getStatus()!=null){
+            criteria.andEqualTo("status",loginRq.getStatus());
+        }
+        return umsAdminMapper.selectByExample(example);
     }
 }
