@@ -8,6 +8,5 @@ public interface IErrorCode {
 
     String getMessage();
 
-    class CommonResult {
-    }
+
 }

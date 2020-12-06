@@ -15,14 +15,14 @@
     <build>
         <defaultGoal>compile</defaultGoal>
         <sourceDirectory>src</sourceDirectory>
-        <finalName>springboot-package</finalName>
+        <finalName>springboot-student-manager</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin </artifactId>
                 <configuration>
                     <fork>true</fork>
-                    <mainClass>main.java.com.kaiyu.StudentApplication</mainClass>
+                    <mainClass>com.kaiyu.StudentApplication</mainClass>
                 </configuration>
                 <executions>
                     <execution>

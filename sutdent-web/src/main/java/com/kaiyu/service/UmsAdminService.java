@@ -17,6 +17,11 @@ public interface UmsAdminService {
 
     int delete(Long adminId);
 
+    /**
+     * 第二部
+     * @param loginRq
+     * @return
+     */
     List<UmsAdmin> query(UmsAdminQueryParam loginRq);
 }
 

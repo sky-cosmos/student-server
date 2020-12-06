@@ -13,10 +13,10 @@ import javax.validation.constraints.NotNull;
 @Data
 public class UmsAdminParam {
 
-    @NotBlank(message = "用戶名不可為空")
+    @NotBlank(message = "用户名不能为空")
     private String username;
 
-    @NotBlank(message = "密碼不可為空")
+    @NotBlank(message = "密码不能为空")
     private String password;
 
     /**
@@ -27,7 +27,7 @@ public class UmsAdminParam {
     /**
      * 邮箱
      */
-    @Email(message = "email格式不正確")
+    @Email(message = "email格式不正确")
     private String email;
 
     /**
@@ -45,6 +45,6 @@ public class UmsAdminParam {
     /**
      * 帐号启用状态：0->禁用；1->启用
      */
-    @NotNull(message = "狀態不可爲空")
+    @NotNull(message = "状态不能为空")
     private Integer status;
 }

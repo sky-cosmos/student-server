@@ -58,8 +58,14 @@ public class AdminController {
         List<UmsAdmin> user= adminService.list(loginRq);
        return CommonResult.success(CommonPage.restPage(user));
     }
-    @PostMapping("/listQuery")
-    public CommonResult<CommonPage> list(@Valid @RequestBody UmsAdminQueryParam  loginRq){
+
+    /**
+     * 刚才说的后台第一部
+     * @param loginRq
+     * @return
+     */
+    @PostMapping("/listQuery") // url +方式
+    public CommonResult<CommonPage> list(@Valid @RequestBody UmsAdminQueryParam  loginRq){// 参数就是http请求体
         List<UmsAdmin> user= adminService.query(loginRq);
         return CommonResult.success(CommonPage.restPage(user));
     }
@@ -73,6 +79,11 @@ public class AdminController {
         }else{
             return CommonResult.failed();
         }
+    }
+    @GetMapping("/logout")
+    public CommonResult login(HttpSession session){
+        session.removeAttribute(SESSIONKEY);
+        return CommonResult.success("");
     }
     @GetMapping("/loginfo")
     public CommonResult<UmsAdmin> getLogInfo(HttpSession session){

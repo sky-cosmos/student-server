@@ -4,9 +4,12 @@ import java.util.List;
 
 import com.kaiyu.common.api.CommonPage;
 import com.kaiyu.common.api.CommonResult;
+import com.kaiyu.domain.UmsAdmin;
 import com.kaiyu.domain.UmsStudent;
 import com.kaiyu.dto.PageParam;
+import com.kaiyu.dto.UmsAdminQueryParam;
 import com.kaiyu.dto.UmsStudentParam;
+import com.kaiyu.dto.UmsStudentQueryParam;
 import com.kaiyu.service.UmsStudentService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +17,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api/v2/student")
@@ -64,5 +68,12 @@ public class StudentController {
         UmsStudent result = umsStudentService.listById(umsStudentId);
         return CommonResult.success(result);
     }
+    @PostMapping("/listQuery") // url +方式
+    public CommonResult<CommonPage> list(@Valid @RequestBody UmsStudentQueryParam loginRq){// 参数就是http请求体
+        List<UmsStudent> user= umsStudentService.query(loginRq);
+        // spring ！！！！
+        return CommonResult.success(CommonPage.restPage(user));
+    }
+
 
 }

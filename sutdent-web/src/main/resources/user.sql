@@ -1,5 +1,4 @@
-use studentmanager;
-drop table  if exists ums_student ;
+
 create table ums_student(
                             student_id varchar (255) primary key  comment '学号',
                             student_name varchar(255) not null comment '姓名',
